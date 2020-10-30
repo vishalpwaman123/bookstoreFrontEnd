@@ -1,0 +1,2 @@
+export const LOGINTOGGLE = 'LOGINTOGGLE'
+export const SIGNUPTOGGLE = 'SIGNUPTOGGLE'
