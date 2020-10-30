@@ -149,3 +149,58 @@ $Input_height : 30px;
         margin: 30px 5px 15px 15px;
     }
 }
+
+$Input_height1 : 25px;
+.signupToggle{
+    .FullNameInput{
+        width: $Input_weight;
+        height: $Input_height1;
+        border: $light_grey_border;
+        border-radius: 4px;
+    }
+
+    .EmailIdInput{
+        width: $Input_weight;
+        height: $Input_height1;
+        border: $light_grey_border;
+        border-radius: 4px;
+    }
+
+    .PasswordInput{
+        width: $Input_weight;
+        height: $Input_height1;
+        border: $light_grey_border;
+        border-radius: 4px;
+    }
+
+    .MobileInput{
+        width: $Input_weight;
+        height: $Input_height1;
+        border: $light_grey_border;
+        border-radius: 4px;
+    }
+
+    .SignupButton{
+        margin-top: 8%;
+        width: 68%;
+    }
+
+    .FullName{
+        margin-right: 190px;
+    }
+
+    .EmailId{
+        margin-top: 15px;
+        margin-right: 200px;
+    }
+
+    .Password{
+        margin-top: 15px;
+        margin-right: 190px;
+    }
+
+    .MobileNumber{
+        margin-top: 15px;
+        margin-right: 145px;
+    }
+}

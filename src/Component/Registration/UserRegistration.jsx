@@ -65,18 +65,25 @@ class UserRegistration extends React.Component {
                                 </div>
                                 :
                                 <div className="signupToggle">
-                                    <InputGroup size="sm" className="mb-3">
-                                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                    <div className="FullName">FullName</div>
+                                    <InputGroup  className="">
+                                        <FormControl className="FullNameInput" aria-label="Medium" aria-describedby="inputGroup-sizing-sm" />
                                     </InputGroup>
-                                    <InputGroup >
-                                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                    <div className="EmailId">EmailId</div>
+                                    <InputGroup className="">
+                                        <FormControl className="EmailIdInput" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                                     </InputGroup>
-                                    <InputGroup size="sm" className="mb-3">
-                                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                    <div className="Password">Password</div>
+                                    <InputGroup  className="">
+                                        <FormControl className="PasswordInput" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                                     </InputGroup>
-                                    <InputGroup size="sm" className="mb-3">
-                                        <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+                                    <div className="MobileNumber">Mobile Number</div>
+                                    <InputGroup className="">
+                                        <FormControl className="MobileInput" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                                     </InputGroup>
+                                    <Button variant="contained" color="secondary" className="SignupButton">
+                                        Login
+                                    </Button>
                                 </div>
                             }
                         </div>
