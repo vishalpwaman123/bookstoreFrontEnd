@@ -1,40 +1,17 @@
 import React from 'react'
 import './HomeBook.scss'
-import booklogo from '../../Assert/booklogo.png'
+import Button from '@material-ui/core/Button';
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import InputGroup from 'react-bootstrap/InputGroup'
-import SearchIcon from '@material-ui/icons/Search';
-import FormControl from 'react-bootstrap/FormControl';
 import Link from '@material-ui/core/Link';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-
+import Header from './Header'
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
 export default class HomeBook extends React.Component {
 
     render() {
         return (
             <div className="homeBookMainContainer">
-                <div className="Header">
-                    <img src={booklogo} className="Signlogo" alt="length" />
-                    <div className="Bookstore">Bookstore</div>
-
-
-                    <InputGroup className="searchBar">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1"><SearchIcon fontSize="small" className="SearchIcon" /></InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            className="search"
-                            placeholder="Search..."
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
-
-                    <PersonOutlineOutlinedIcon fontSize="large" className="AccountIcon" />
-                    <ShoppingCartOutlinedIcon fontSize="large" className="CartIcon" />
-                </div>
+                <Header />
                 <div className="homeBookBody">
                     <div className="breadcrumbs">
                         <Breadcrumbs aria-label="breadcrumb">
@@ -46,8 +23,50 @@ export default class HomeBook extends React.Component {
                             </Link>
                         </Breadcrumbs>
                     </div>
+                    <div className="BookBody">
+                        <div className="BookBody1">
+                            <div className="BookImage">
+
+                            </div>
+                            <div className="Buttons">
+                                <div className="B1">
+                                    <Button
+                                        variant="contained"
+                                        color="secondary"
+                                        className="Button1"> 
+                                        ADD TO BAG
+                                    </Button>
+                                </div>
+                                <div className="B2">
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        className="Button2"
+                                        startIcon={<FavoriteBorderIcon>send</FavoriteBorderIcon>}>
+                                            WISHLIST
+                                        </Button>
+                                </div>
+                                </div>
+
+                            </div>
+                            <div className="BookBody2">
+                                    <div className="BookName"></div>
+                                    <div className="AutherName"></div>
+                                    <div className="Rating"></div>
+                                    <div className="Price"></div>
+                                    <div className="Line"></div>
+                                    <div className="Description"></div>
+                                    <div className="Line"></div>
+                                    <div className="CFeedBack"> Customer FeedBack</div>
+                                    <div className="Subfeedback">
+                                    <div className="FeedRating"></div>
+                                    <div className="feedBackInput"></div>
+                                    <div className="SubmitButton"></div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
         )
     }
 } 

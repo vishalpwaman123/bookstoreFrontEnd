@@ -12,8 +12,8 @@ import MuiAlert from '@material-ui/lab/Alert';
 import userService from '../../Services/userService';
 
 const User_service = new userService();
-//import 'bootstrap/dist/css/bootstrap.min.css';
 
+const validEmailRegex = RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i);
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -26,29 +26,75 @@ class UserRegistration extends React.Component {
         super();
         this.state = {
             open: false,
-            EmailId: '',
-            Password: '',
-            FullName: '',
-            MobileNumber: '',
-            
+            EmailId: null,
+            Password: null,
+            FullName: null,
+            MobileNumber: null,
+
             errors: {
-                EmailId: "",
-                Password: "",
-                FullName: "",
-                MobileNumber : "",
+                EmailId: '',
+                Password: '',
+                FullName: '',
+                MobileNumber: '',
             },
         }
     }
 
-    handleClick = (event) => {
+    handleClickSignIn = (event) => {
         event.preventDefault();
         let errors = this.state.errors;
+        const { name, value } = event.target;
 
-        if(this.state.EmailId === '') {
+        if (this.state.EmailId === null) {
             errors.EmailId = "First Name Required";
         }
 
-        if(this.state.Password === '') {
+        if (this.state.Password === null) {
+            errors.Password = "First Name Required";
+        }
+
+        switch (name) {
+            case "email":
+                errors.EmailId = validEmailRegex.test(value) ? "" : "Email Id not valid";
+                break;
+            case "password":
+                errors.Password = value.length < 8 ? "Password Not valid" : "";
+                break;
+            default:
+                break;
+        }
+
+        const user = {
+
+            EmailId: this.state.EmailId,
+            Password: this.state.Password,
+
+        };
+
+        User_service.SignIn(user)
+            .then(data => {
+                console.log("Login Data :", data);
+                this.props.history.push('/dashboard');
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+
+        this.setState({ open: true })
+    };
+
+
+    handleClickSignUp = (event) => {
+        event.preventDefault();
+        let errors = this.state.errors;
+
+        if (this.state.EmailId === '') {
+            errors.EmailId = "First Name Required";
+        }
+
+        if (this.state.Password === '') {
             errors.Password = "First Name Required";
         }
 
@@ -62,8 +108,9 @@ class UserRegistration extends React.Component {
 
         this.setState({ open: false })
     };
+
     render() {
-        console.log(this.props.logintoggle, this.props.signuptoggle)
+        const { errors } = this.state;
         return (
             <div className="MainContainer">
                 <div className="cart">
@@ -89,6 +136,8 @@ class UserRegistration extends React.Component {
                                             className="EmailIdInput"
                                             aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm"
+                                            name="email"
+                                            value={this.state.EmailId}
                                             onChange={(e) => { this.setState({ EmailId: e.target.value }) }} />
                                     </InputGroup>
                                     <div className="password">Password</div>
@@ -96,6 +145,8 @@ class UserRegistration extends React.Component {
                                         <FormControl
                                             className="PasswordInput"
                                             aria-label="Small"
+                                            name="password"
+                                            value={this.state.Password}
                                             aria-describedby="inputGroup-sizing-sm"
                                             onChange={(e) => { this.setState({ Password: e.target.value }) }} />
                                     </InputGroup>
@@ -104,13 +155,13 @@ class UserRegistration extends React.Component {
                                         variant="contained"
                                         color="secondary"
                                         className="LoginButton"
-                                        onClick={this.handleClick}>
+                                        onClick={this.handleClickSignIn}>
                                         Login
                                     </Button>
                                     <div className="lines">
-                                        <hr class="solid"></hr>
+                                        <hr className="solid"></hr>
                                         <div className="OR">OR</div>
-                                        <hr class="solid"></hr>
+                                        <hr className="solid"></hr>
                                     </div>
                                     <div className="SocialButton">
                                         <Button variant="contained" color="primary" className="Facebook" >
@@ -166,7 +217,7 @@ class UserRegistration extends React.Component {
                                         variant="contained"
                                         color="secondary"
                                         className="SignupButton"
-                                        onClick={this.handleClick}>
+                                        onClick={this.handleClickSignUp}>
                                         Login
                                     </Button>
                                 </div>
@@ -174,14 +225,31 @@ class UserRegistration extends React.Component {
                         </div>
 
                         <div className="Snackbar">
-                          
-                            <Snackbar 
-                                open={this.state.open} 
-                                autoHideDuration={6000} 
+
+                            <Snackbar
+                                open={this.state.open}
+                                autoHideDuration={6000}
                                 onClose={this.handleClose}>
-                                <Alert onClose={this.handleClose} severity="success">
-                                    This is a success message!
-                                </Alert>
+                                {errors.EmailId.length <= 0 && errors.Password.length <= 0 ?
+
+                                    <Alert onClose={this.handleClose} severity="success">
+                                        Login Sucessfully
+                                    </Alert>
+
+                                    :
+                                    <div>
+                                        {errors.EmailId.length > 0 ?
+                                            <Alert onClose={this.handleClose} severity="error">
+                                                Invalid Email Id Field
+                                            </Alert>
+                                            :
+                                            <Alert onClose={this.handleClose} severity="error">
+                                                InValid Password Field 
+                                            </Alert>
+                                        }
+                                    </div>
+                                }
+
                             </Snackbar>
 
                         </div>

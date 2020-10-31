@@ -11,6 +11,7 @@ import OrderPlace from '../src/Component/Dashborder/OrderPlace'
 import Profile from '../src/Component/Dashborder/Profile'
 import MyOrder from '../src/Component/Dashborder/MyOrder'
 import WishList from '../src/Component/Dashborder/WishList'
+import ResetPassword from '../src/Component/ResetPassword/ResetPassword'
 
 import { Provider } from 'react-redux';
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/" component={Registration} />
           <Route exact path="/dashboard" component={Dashbord} />
           <Route exact path="/ForgetPassword" component={ForgetPassword} />
+          <Route exact path="/ResetPassword" component={ResetPassword} />
           <Route exact path="/HomeBook" component={HomeBook} />
           <Route exact path="/Cart" component={Cart} />
           <Route exact path="/OrderPlace" component={OrderPlace} />

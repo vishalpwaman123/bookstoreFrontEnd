@@ -1,40 +1,102 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import './dashbord.scss'
-import booklogo from '../../Assert/booklogo.png'
-import SearchIcon from '@material-ui/icons/Search';
-import FormControl from 'react-bootstrap/FormControl'
-import InputGroup from 'react-bootstrap/InputGroup'
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
+import userService from '../../Services/userService';
+import Header from './Header'
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
 
-export default class dashbord extends React.Component {
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
-    render() {
-        return (
-            <div className="mainDashContainer">
-                <div className="Header">
-                    <img src={booklogo} className="Signlogo" alt="length" />
-                    <div className="Bookstore">Bookstore</div>
+const User_service = new userService();
 
-                    
-                    <InputGroup className="searchBar">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1"><SearchIcon fontSize="small" className="SearchIcon"/></InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            className="search"
-                            placeholder="Search..."
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
+function Dashbord(props) {
 
-                    <PersonOutlineOutlinedIcon fontSize="large" className="AccountIcon"/>
-                    <ShoppingCartOutlinedIcon fontSize="large" className="CartIcon"/>
+    let history = useHistory();
+
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [notes, setNotes] = useState([]);
+
+
+    const handleBook = (event) => {
+        history.push("/HomeBook");
+    }
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
+    useEffect(() => {
+
+
+        User_service.GetBooks()
+            .then(response => {
+                console.log("Result :", response.data.data);
+                setNotes(response.data.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+    }, []);
+
+    const Books = notes.map(note =>
+        <div className="getBooks" onClick={() => { handleBook(note) }}>
+            <div className="imageZone">
+                <img className="imageLink" alt="Qries" src={note.imageLink} />
+            </div>
+            <div className="bookName">{note.bookName}</div>
+            <div className="authorName">by {note.authorName}</div>
+            <div className="conversionType1">{note.description}</div>
+            <div className="price">Rs. {note.price}</div>
+            {/* <HomeBook notes={currentNote} show={show} onHide={() => { setshow(false); }}></HomeBook> */}
+        </div>
+    )
+
+
+
+
+    return (
+        <div className="mainDashContainer">
+            <Header classname="" />
+            <div className="DashBody">
+                <div className="Middle">
+                    <div className="Books">Books</div>
+                    <div className="Sort">
+                        <Button className="SortButton" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            Sort by relevence
+                        </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            keepMounted
+                            open={Boolean(anchorEl)}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={handleClose}>Price : Low To High</MenuItem>
+                            <MenuItem onClick={handleClose}>Price : High To Low</MenuItem>
+                            <MenuItem onClick={handleClose}>Newest Arrive</MenuItem>
+                        </Menu>
+                    </div>
                 </div>
-                <div className="Body">
+                <div className="dashBoardBody">
+                    {Books}
                 </div>
             </div>
-        )
+        </div>
+    )
+}
+
+const mapDispatchToProps = (dispatch) => {
+
+    return {
     }
 }
+
+export default connect(mapDispatchToProps)(Dashbord)

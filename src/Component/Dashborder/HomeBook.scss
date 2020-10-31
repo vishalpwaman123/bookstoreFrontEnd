@@ -1,3 +1,46 @@
 @import '../CommonScss/NavBar.scss';
 
-@import '../CommonScss/BreadCrumbs.scss'
+@import '../CommonScss/BreadCrumbs.scss';
+
+.BookBody{
+    width: 968px;
+    height: 385px;
+    border: 1px solid lightgray;
+    margin: 10px 200px 0px 200px;
+    display: flex;
+
+    .BookBody1{
+        width: 350px;
+        height: 383px;
+        border: 1px solid lightgray;
+
+        .BookImage{
+            width: 300px;
+            height: 300px;
+            margin: 10px 20px 10px 20px;
+            border: 1px solid lightgray;
+        }
+
+        .Buttons{
+            display: flex;
+
+            .Button1{
+                margin: 10px 0px 0px 10px;
+                width: 150px;
+            }
+
+            .Button2{
+                margin: 10px 0px 0px 20px;
+                width: 150px;
+            }
+        }
+    }
+
+    .BookBody2{
+        width: 618px;
+        height: 383px;
+        border: 1px solid lightgray;
+    }
+
+    
+}
