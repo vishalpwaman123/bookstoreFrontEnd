@@ -1,0 +1,43 @@
+@import '../CommonScss/Header';
+
+@mixin IconChange($margin1 , $margin2, $margin3, $margin4, $color) {
+    margin: $margin1 $margin2 $margin3 $margin4;
+    color: $color;
+}
+
+@mixin Search($width, $height, $bRadius, $m1, $m2, $m3, $m4 ) {
+    width: $width;
+    height: $height;
+    border-radius: $bRadius;
+    margin: $m1 $m2 $m3 $m4;
+}
+
+.Header{
+    
+    .searchBar{
+        @include Search(490px, 37px, 5px, 12px, 0px, 0px, 80px);
+        background-color: #fff;
+        display: flex;
+    }
+
+
+    .SearchIcon{
+        margin: 09px 0px 0px 10px;
+    }
+
+    .search{
+        @include Search(480px, 33px, 5px, 00px, 0px, 0px, 10px);
+        border: 1px solid #fff;
+    }
+
+    .AccountIcon{
+        @include IconChange(12px,0px ,0px ,100px ,#fff );
+
+    }
+
+    .CartIcon{
+        @include IconChange(12px, 0px, 0px, 100px, #fff);
+   
+    }
+
+}

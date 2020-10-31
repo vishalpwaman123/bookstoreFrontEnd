@@ -6,6 +6,7 @@ import { loginToggleStatus } from '../../Redux';
 import { signupToggleStatus } from '../../Redux';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button';
+import Signlogo from '../../Assert/RegistrationLogo.png'
 //import 'bootstrap/dist/css/bootstrap.min.css';
 
 class UserRegistration extends React.Component {
@@ -16,7 +17,8 @@ class UserRegistration extends React.Component {
             <div className="MainContainer">
                 <div className="cart">
                     <div className="cart1">
-
+                    <img src={Signlogo} className="Signlogo" alt="length"/>
+                    <div className="OBShoping">ONLINE BOOK SHOPPING</div>
                     </div>
                     <div className="cart2">
                         <div className="title">
@@ -81,7 +83,7 @@ class UserRegistration extends React.Component {
                                     <InputGroup className="">
                                         <FormControl className="MobileInput" aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
                                     </InputGroup>
-                                    <Button variant="contained" color="secondary" className="SignupButton">
+                                    <Button variant="contained" color="secondary" className="SignupButton" >
                                         Login
                                     </Button>
                                 </div>

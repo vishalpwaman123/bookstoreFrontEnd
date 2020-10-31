@@ -19,19 +19,32 @@ $position : absolute;
 
     .cart1{
         position: $position;
-        // margin-top: 185px;
-        // margin-left: 320px;
+
         top: 185px;
         left: 320px;
         width: 624px;
         height: 391px;
-        background-color: $light_grey ;
+        background-color: rgb(231, 231, 231) ;
         border-radius: 15px;
+
+        .Signlogo{
+            height: 245px;
+            width: 245px;
+            margin-right: 300px;
+            margin-top: 55px;
+        }
+
+        .OBShoping{
+            font-weight: 700;
+            font-size: 17px;
+            margin-bottom: 100px;
+            margin-top: 30px;
+            margin-right: 270px;
+        }
     }
 
     .cart2{
-        // margin-top: 166px;
-        // margin-left: 0px;
+
         top: 166px;
         left: 658px;
         width: 389px;
@@ -68,16 +81,18 @@ $font_weight : 600;
 
     .SignUp{
 
-        margin-left : $margin_left;
-        margin-top: $margin_top;
-        font-size: $font_size;
-        font-weight: $font_weight;
+        @extend .Login;
+        // margin-left : $margin_left;
+        // margin-top: $margin_top;
+        // font-size: $font_size;
+        // font-weight: $font_weight;
     
     }
 }
 
 $Input_weight : 250px;
 $Input_height : 30px;
+$Border_Radius : 4px;
 
 .Toggle {
     //border: $light_grey_border ;
@@ -98,14 +113,12 @@ $Input_height : 30px;
             width: $Input_weight;
             height: $Input_height;
             border: $light_grey_border;
-            border-radius: 4px;
+            border-radius: $Border_Radius;
         }
         
         .PasswordInput{
-             width: $Input_weight;
-             height: $Input_height;
-             border: $light_grey_border;
-             border-radius: 4px;
+            @extend .EmailIdInput;
+
         }
         
         .ForgetPassword{
@@ -156,28 +169,19 @@ $Input_height1 : 25px;
         width: $Input_weight;
         height: $Input_height1;
         border: $light_grey_border;
-        border-radius: 4px;
+        border-radius: $Border_Radius;
     }
 
     .EmailIdInput{
-        width: $Input_weight;
-        height: $Input_height1;
-        border: $light_grey_border;
-        border-radius: 4px;
+        @extend .FullNameInput;
     }
 
     .PasswordInput{
-        width: $Input_weight;
-        height: $Input_height1;
-        border: $light_grey_border;
-        border-radius: 4px;
+        @extend .FullNameInput;
     }
 
     .MobileInput{
-        width: $Input_weight;
-        height: $Input_height1;
-        border: $light_grey_border;
-        border-radius: 4px;
+        @extend .FullNameInput;
     }
 
     .SignupButton{

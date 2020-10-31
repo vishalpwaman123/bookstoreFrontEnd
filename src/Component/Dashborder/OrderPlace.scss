@@ -1,0 +1,98 @@
+@import '../CommonScss/NavBar.scss';
+
+.OrderPlaceBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+.Message{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 100px;
+}
+
+.DescriptionMain{
+    margin-top: 100px;
+}
+
+.Description{
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(133, 133, 133);
+}
+
+
+
+.Detail{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .DetailedBar{
+        display: flex;
+        margin-left: 25%;
+        height: 50px;
+        width: 700px;
+        background-color: lightgray;
+        border: 1px solid #000;
+        margin-top: 30px;
+
+        .DNav1{
+            margin: 12px 0px 0px 70px;
+        }
+
+        .DNav2{
+            margin: 12px 0px 0px 180px;
+        }
+
+        .DNav3{
+            margin: 12px 0px 0px 180px;
+        }
+    }
+
+    .DetailedTableBar{
+        display: flex;
+        height: 80px;
+        width: 702px;
+        margin-left: 25%;
+        background-color: lightgray;
+
+
+        .DNav11{
+            margin: 0px 0px 0px 0px;
+            border-width: 0px 1px 1px 1px;
+            border-style:  solid;
+            border-color: #000;
+            height: 79px;
+            width: 234px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .DNav22{
+            margin: 0px 0px 0px 0px;
+            border-width: 0px 1px 1px 0px;
+            border-style:  solid;
+            border-color: #000;
+            height: 79px;
+            width: 234px;
+            //display: flex;
+            //flex-wrap: wrap;
+        }
+
+        .DNav33{
+            margin: 0px 0px 0px 0px;
+            border-width: 0px 1px 1px 0px;
+            border-style:  solid;
+            border-color: #000;
+            height: 79px;
+            width: 235px;
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 2px;
+        }
+    }
+
+}
+
+}

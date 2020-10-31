@@ -1,0 +1,21 @@
+.Header{
+    width: 1518px;
+    height: 60px;
+    background-color: maroon;
+
+    display: flex;
+    justify-content: left;
+
+    .Signlogo{
+        height: 23px;
+        width: 31px;
+        margin : 18px 0px 0px 200px;
+    }
+
+    .Bookstore{
+        color: #fff;
+        font-size: 25px;
+        margin: 12px 0px 0px 14px;
+    }
+
+}
