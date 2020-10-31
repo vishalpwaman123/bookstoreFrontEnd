@@ -1,0 +1,203 @@
+@import '../CommonScss/NavBar.scss';
+
+.InputField1{
+    //border: 1px solid lightgrey;
+    width: 500px;
+    height: 400px;
+    margin: 10px 0px 0px 100px;
+
+    .Title1{
+
+        display: flex;
+        justify-content: left;
+    
+        .PersonalDetail{
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0px 0px 0px 50px;
+
+        }
+
+        .Edit{
+            margin: 5px 0px 0px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgb(107, 0, 0);
+        }
+
+    }
+
+    .FullName{
+        margin: 20px 0px 02px 47px;
+        display: flex;
+        justify-content: left;
+        font-weight: 500;
+    }
+
+    .EmailId{
+        @extend .FullName;
+    }
+
+    .Password{
+        @extend .EmailId;
+    }
+
+    .MobileNumber{
+        @extend .Password;
+    }
+
+    .FullNameInput{
+        width: 400px;
+        height: 35px;
+        background-color: rgb(248, 247, 247);
+        border: 1px solid rgb(190, 190, 190);
+        border-radius: 3px;
+        margin: 0px 0px 0px 0px;
+    }
+
+    .EmailIdInput{
+        @extend .FullNameInput;
+
+    }
+
+    .PasswordInput{
+        @extend .FullNameInput;
+
+    }
+
+    .MobileInput{
+        @extend .FullNameInput;
+
+    }
+}
+
+.InputField2{
+
+    width: 500px;
+    height: 400px;
+    margin: 10px 0px 0px 100px;
+
+    .Title1{
+        display: flex;
+        justify-content: left;
+
+        .AddressDetail{
+            font-size: 20px;
+            font-weight: 500;
+            margin: 0px 0px 0px 50px;
+        }
+
+        .AddNewAddressButton{
+            margin: 2px 0px 0px 130px;
+            font-size: 10px;
+            font-weight: 600;
+            color: rgb(107, 0, 0);
+        }
+
+    }
+
+    .Title2{
+
+        display: flex;
+        justify-content: left;
+    
+        .Work{
+            font-size: 18px;
+            font-weight: 500;
+            margin: 20px 0px 0px 50px;
+
+        }
+
+        .Edit{
+            margin: 23px 0px 0px 30px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgb(107, 0, 0);
+        }
+
+
+    }
+
+    .Address{
+        
+        margin: 20px 0px 02px 47px;
+        display: flex;
+        justify-content: left;
+        font-weight: 500;
+    }
+
+    .AddressInput{
+        width: 400px;
+        height: 35px;
+        background-color: rgb(248, 247, 247);
+        border: 1px solid rgb(190, 190, 190);
+        border-radius: 3px;
+        // margin: 0px 0px 0px 0px;
+    }
+
+    .SubInput21{
+        display: flex;
+
+        .CityTownInput{
+            margin: 20px 0px 00px 47px;
+            font-weight: 500;
+
+            .City{
+                display: flex;
+                justify-content: left;
+            }
+
+            .CityInput{
+                width: 194px;
+                height: 35px;
+                background-color: rgb(248, 247, 247);
+                border: 1px solid rgb(190, 190, 190);
+                border-radius: 3px;
+            }
+        }
+
+        .StateInput{
+            margin: 20px 0px 00px 7px;
+            font-weight: 500;
+
+            .State{
+                display: flex;
+                justify-content: left;
+            }
+
+            .StatesInput{
+                width: 194px;
+                height: 35px;
+                background-color: rgb(248, 247, 247);
+                border: 1px solid rgb(190, 190, 190);
+                border-radius: 3px;
+            }
+        }
+    }
+
+    .TypeInput{
+
+       
+
+        .Type{
+            margin: 30px 0px 00px 48px;
+            font-weight: 500;
+            display: flex;
+            justify-content: left;
+        }
+
+        .RedioGroupInput{
+            display: flex;
+            margin: 10px 0px 00px 35px;
+            .RedioGroup{
+                display: flex;
+                flex-direction: row;
+            }
+
+            .RedioGroup1{
+                margin: 10px 50px 0px 0px;
+            }
+        }
+    }
+
+}
