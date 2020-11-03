@@ -5,20 +5,27 @@
 .BookBody{
     width: 968px;
     height: 385px;
-    border: 1px solid lightgray;
+    // border: 1px solid lightgray;
     margin: 10px 200px 0px 200px;
     display: flex;
 
     .BookBody1{
         width: 350px;
         height: 383px;
-        border: 1px solid lightgray;
+        // border: 1px solid lightgray;
 
         .BookImage{
             width: 300px;
-            height: 300px;
+            height: 350px;
             margin: 10px 20px 10px 20px;
             border: 1px solid lightgray;
+            background-color: lightgray;
+
+            .imageLink{
+                margin: 15px 0px 0px 0px;
+                width: 230px;
+                height : 320px;
+            }
         }
 
         .Buttons{
@@ -38,8 +45,126 @@
 
     .BookBody2{
         width: 618px;
-        height: 383px;
-        border: 1px solid lightgray;
+        height: 620px;
+        // border: 1px solid lightgray;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        border-radius : 5px;
+
+        .BookName{
+            font-weight: 500;
+            font-size: 25px;
+            margin: 10px 0px 5px 15px;
+        }
+
+        .AutherName{
+            margin: 0px 0px 5px 15px;
+            color: rgb(146, 143, 143);
+        }
+
+        .Rating{
+            margin: 0px 0px 5px 15px;
+            background-color: green;
+            width: 80px;
+            height: 20px;
+            padding-bottom : 2px;
+            display: flex;
+            flex-direction: row;
+            //padding: 0px 0px 3px 10px;
+            .Ratenumber {
+                margin : 0px 5px 1px 20px;
+                color: honeydew;
+            }
+            
+            .Star{
+                margin: 1px 0px 0px 5px;
+                color: honeydew;
+            }
+            
+        }
+
+        .Price{
+            font-weight: 600;
+            font-size: 30px;
+            margin: 10px 0px 5px 15px;
+        }
+
+        .Line{
+            width: 800px;
+            height: 1px;
+            background-color:  rgb(121, 121, 121);
+            margin : 15px 0px 5px 15px;
+        }
+
+        .Description{
+            margin : 15px 0px 5px 15px;
+            color:  rgb(95, 95, 95);
+            height: fit-content;
+        }
+
+        .CFeedBack{
+            margin : 15px 0px 5px 15px;
+            font-weight: 500;
+            font-size: 15px;
+
+        }
+
+        .Subfeedback{
+            height: 250px;
+            width: 557px;
+            margin : 15px 0px 5px 15px;
+            background-color: rgb(240, 232, 232);
+            border-radius: 5px;
+
+            .OverallRating{
+                display: flex;
+                margin : 10px 0px 5px 20px;
+                align-items: flex-start;
+                font-weight: 500;
+            }
+
+            .FeedRating{
+                display: flex;
+                align-items: flex-start;
+                margin : 5px 0px 5px 0px;
+
+                .MuiBox-root-2{
+                    margin-bottom: 0px;
+                }
+            }
+
+            .MultiLine{
+                display: flex;
+                align-items: flex-start;
+                margin : 5px 0px 5px 15px;
+                border-color: #fff ;
+
+
+                .MuiOutlinedInput-multiline{
+                    padding: 5px 5px;
+                    border-color: #fff ;
+                    background-color: #fff;
+                    height: 80px;
+                    width: 500px;
+                }
+            }
+
+            .SubmitButton{
+
+                display: flex;
+                justify-content: flex-end;
+
+            .submitButton{
+
+                margin: 5px 50px 0px 0px;
+                height: 30px;
+                width: 100px;
+            }
+        }
+        }
+
+        
     }
 
     

@@ -74,6 +74,7 @@ class UserRegistration extends React.Component {
         User_service.SignIn(user)
             .then(data => {
                 console.log("Login Data :", data);
+                localStorage.setItem('token',data.data.data.token);
                 this.props.history.push('/dashboard');
 
             })

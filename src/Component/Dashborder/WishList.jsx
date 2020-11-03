@@ -1,52 +1,56 @@
 import React from 'react'
 import './WishList.scss'
-import booklogo from '../../Assert/booklogo.png'
+import Header from './Header/Header1'
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
-import InputGroup from 'react-bootstrap/InputGroup'
-import SearchIcon from '@material-ui/icons/Search';
-import FormControl from 'react-bootstrap/FormControl';
 import Link from '@material-ui/core/Link';
-import PersonOutlineOutlinedIcon from '@material-ui/icons/PersonOutlineOutlined';
-import ShoppingCartOutlinedIcon from '@material-ui/icons/ShoppingCartOutlined';
-
-export default class WishList extends React.Component {
-
-    render() {
-        return(
-            <div className="wishListMainCointainer">
-                <div className="Header">
-                    <img src={booklogo} className="Signlogo" alt="length" />
-                    <div className="Bookstore">Bookstore</div>
+import { useDispatch, useSelector } from 'react-redux';
 
 
-                    <InputGroup className="searchBar">
-                        <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon1"><SearchIcon fontSize="small" className="SearchIcon" /></InputGroup.Text>
-                        </InputGroup.Prepend>
-                        <FormControl
-                            className="search"
-                            placeholder="Search..."
-                            aria-label="Username"
-                            aria-describedby="basic-addon1"
-                        />
-                    </InputGroup>
+export default function WishList() {
 
-                    <PersonOutlineOutlinedIcon fontSize="large" className="AccountIcon" />
-                    <ShoppingCartOutlinedIcon fontSize="large" className="CartIcon" />
+    const dispatch = useDispatch();
+    const ArrayList = useSelector(state => state.ArrayList);
+    console.log("WishList Component Data :", ArrayList);
+
+
+    const Books = ArrayList.map(note =>
+        <div className="WishlistList">
+            <div className="WListBound">
+                <div className="BookImage"><img className="SubBookImage" alt="Qries" src={note.bookDetail.imageLink} /></div>
+                <div className="BookDetail">
+                    <div className="BookName">{note.bookDetail.bookName}</div>
+                    <div className="Author">by {note.bookDetail.authorName}</div>
+                    <div className="Price">Rs. {note.bookDetail.price}</div>
                 </div>
-                <div className="homeBookBody">
-                    <div className="breadcrumbs">
-                        <Breadcrumbs aria-label="breadcrumb">
-                            <Link color="inherit" href="/" className="Link1">
-                                Home
+            </div>
+        </div>
+
+    )
+
+    return (
+        <div className="wishListMainCointainer">
+            <Header />
+            <div className="homeBookBody">
+                <div className="breadcrumbs">
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link color="inherit" href="/" className="Link1">
+                            Home
                             </Link>
-                            <Link color="inherit" href="/" className="Link2">
+                        <Link color="inherit" href="/" className="Link2">
                             My WishList
                             </Link>
-                        </Breadcrumbs>
+                    </Breadcrumbs>
+                </div>
+                <div className="WishBody">
+                    <div className="MyWishlist">
+                        <div className="WishTitle">My Wishlist</div>
+                    </div>
+                    <div className="List">
+                        {Books}
                     </div>
                 </div>
             </div>
-        )
-    }
+        </div>
+    )
 }
+

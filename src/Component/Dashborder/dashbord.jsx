@@ -6,13 +6,20 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory } from "react-router-dom";
-import { connect } from 'react-redux';
+import {useSelector , useDispatch} from 'react-redux';
+import { bookNameFunction } from '../../Redux';
 
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 const User_service = new userService();
 
-function Dashbord(props) {
+export default function Dashbord(props) {
+
+    const BookName = useSelector(state => state.currentBookName)
+
+    console.log(BookName);
+
+    const dispatch = useDispatch();
 
     let history = useHistory();
 
@@ -20,7 +27,8 @@ function Dashbord(props) {
     const [notes, setNotes] = useState([]);
 
 
-    const handleBook = (event) => {
+    const handleBook = () => {
+        
         history.push("/HomeBook");
     }
 
@@ -33,8 +41,7 @@ function Dashbord(props) {
     };
 
     useEffect(() => {
-
-
+        
         User_service.GetBooks()
             .then(response => {
                 console.log("Result :", response.data.data);
@@ -47,7 +54,7 @@ function Dashbord(props) {
     }, []);
 
     const Books = notes.map(note =>
-        <div className="getBooks" onClick={() => { handleBook(note) }}>
+        <div className="getBooks" onClick={()=> dispatch(bookNameFunction(note.bookName) , handleBook())}>
             <div className="imageZone">
                 <img className="imageLink" alt="Qries" src={note.imageLink} />
             </div>
@@ -55,12 +62,8 @@ function Dashbord(props) {
             <div className="authorName">by {note.authorName}</div>
             <div className="conversionType1">{note.description}</div>
             <div className="price">Rs. {note.price}</div>
-            {/* <HomeBook notes={currentNote} show={show} onHide={() => { setshow(false); }}></HomeBook> */}
         </div>
     )
-
-
-
 
     return (
         <div className="mainDashContainer">
@@ -93,10 +96,16 @@ function Dashbord(props) {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
+// const mapDispatchToProps = (dispatch) => {
 
-    return {
-    }
-}
+//     return {
 
-export default connect(mapDispatchToProps)(Dashbord)
+//         bookNFunction: function (bookName) {
+//             console.log(bookName)
+//             dispatch(bookNameFunction());
+//         },
+//     }
+// }
+
+
+// export default connect(mapDispatchToProps)(Dashbord)

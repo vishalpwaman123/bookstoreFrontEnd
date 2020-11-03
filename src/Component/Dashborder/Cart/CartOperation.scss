@@ -1,117 +1,3 @@
-@import '../CommonScss/NavBar.scss';
-@import '../CommonScss/BreadCrumbs';
-
-.CartList{
-    width: 711px;
-    height: 281px;
-    border: 1px solid lightgray;
-    margin: 10px 0px 0px 200px;
-
-.CartdetailBorder{
-    .MyCart{
-        width: 771px;
-        height: 241px;
-        // border: 1px solid lightgray;
-        margin: 10px 0px 0px 30px;
-
-        .TitleMyCart{
-            font-size: 20px;
-            font-weight: 500;
-            margin : 0px 0px 0px 0px;
-            display: flex;
-            align-items: flex-start;
-        }
-
-        .CartDetailed{
-            display: flex;
-            margin: 20px 0px 0px 0px;
-
-            .BookImage{
-                height: 85px;
-                width: 65px;
-                //border: 1px solid lightgray;
-            }
-
-            .Detailed{
-
-                .BookDetailed{
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    margin: 0px 0px 10px 40px;
-
-                }
-
-                // border: 1px solid lightgray;
-                height: 205px;
-                width: 655px;
-                
-
-                .BookName{
-                    font-size: 20px;
-                    font-weight: 500;
-                    margin: 0px 0px 7px 0px;
-                }
-
-                .AuthorName{
-                    font-size: 15px;
-                    color: rgb(179, 175, 175);
-                    margin: 0px 0px 7px 0px;
-                }
-
-                .Price{
-                    font-size: 20px;
-                    font-weight: 500;
-                }
-
-                .Quentity {
-
-                    display: flex;
-                    margin: 10px 0px 7px 28px;
-
-                    .B1{
-                        margin: 0px 05px 7px 10px;
-                    }
-
-                    .QuentityInput{
-                        width: 100px;
-                        height: 40px;
-
-                        .MuiOutlinedInput-input {
-                             padding: 08px 0px 08px 45px;
-                            //  height: 30px;
-                        }
-                    }
-
-                    .B2{
-                        margin: 0px 05px 7px 05px;
-                    }
-
-                    .Remove{
-                        
-                        margin: 7px 0px 0px 10px;
-                        font-size: 15px;
-                        font-weight: 500;
-
-                    }
-                }
-
-                .PlaceOrderButton{
-                    display: flex;
-                    flex-direction: row;
-                    margin: 0px 0px 0px 200px;
-                    align-items: flex-end;
-                    // width: 300px;
-                    // height: 50px;
-                }
-            }
-        }
-    }
-
-}
-
-}
-
 .Operation{
 
     .AdressDetailed{
@@ -314,8 +200,6 @@
 
 .OrderSum{
 
-
-
     .OrderSummery1{
     
         width: 711px;
@@ -328,7 +212,7 @@
     .OrderSTitle{
         font-size: 18px;
         font-weight: 500;
-        margin: 10px 10px 10px 20px;
+        margin: 10px 10px 10px 36px;
         display: flex;
     }
 

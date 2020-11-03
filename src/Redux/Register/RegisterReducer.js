@@ -1,29 +1,99 @@
-import {LOGINTOGGLE} from './RegisterType'
-import {SIGNUPTOGGLE} from './RegisterType'
+import { LOGINTOGGLE } from './RegisterType'
+import { SIGNUPTOGGLE } from './RegisterType'
+import { BOOKNAME } from './RegisterType'
+import { ARRAYLIST } from './RegisterType'
+import { ARRAYWISHLIST } from './RegisterType'
+import { ADDQUENTITY } from './RegisterType'
+import { SUBQUENTITY } from './RegisterType'
+import { PLACEORDERKEY } from './RegisterType'
+import { CONTINUESKEY } from './RegisterType'
 
 const initialState = {
-    logintoggle : true,
-    signuptoggle : false
+    key: '',
+    logintoggle: true,
+    signuptoggle: false,
+    currentBookName: '',
+    ArrayList: [],
+    ArrayWishList: [],
+    PlaceOrderKey: false,
+    ContinuesKey: false,
+    quentity: 0,
 }
 
-const bookStorereducer = (state = initialState , action) => {
-    switch(action.type) {
+const bookStorereducer = (state = initialState, action) => {
 
-        case LOGINTOGGLE :
+    switch (action.type) {
+
+        case PLACEORDERKEY:
             return {
                 ...state,
-                logintoggle : true,
-                signuptoggle : false
+                PlaceOrderKey: !state.PlaceOrderKey,
+
             }
 
-        case SIGNUPTOGGLE :
+        case CONTINUESKEY:
+
             return {
                 ...state,
-                logintoggle : false,
-                signuptoggle : true
+                ContinuesKey: !state.ContinuesKey,
+
+            }
+        case LOGINTOGGLE:
+            return {
+                ...state,
+                logintoggle: true,
+                signuptoggle: false
+
             }
 
-        default : return state;
+        case SIGNUPTOGGLE:
+            return {
+                ...state,
+                logintoggle: false,
+                signuptoggle: true
+
+            }
+
+        case BOOKNAME:
+            return {
+                ...state,
+                currentBookName: action.bookName,
+                ArrayList: '',
+
+            }
+
+        case ARRAYLIST:
+            return {
+                ...state,
+                ArrayList: action.ArrayList,
+
+            }
+
+        case ARRAYWISHLIST:
+            return {
+                ...state,
+                ArrayWishList: action.ArrayWishList,
+
+            }
+
+        case ADDQUENTITY:
+            return {
+                ...state,
+                quentity: state.quentity + 1,
+
+            }
+
+        case SUBQUENTITY:
+            if (state.quentity === 0) {
+                state.quentity = 1
+            }
+            return {
+                ...state,
+                quentity: state.quentity - 1,
+
+            }
+
+        default: return state;
     }
 }
 

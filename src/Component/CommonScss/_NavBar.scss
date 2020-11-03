@@ -15,7 +15,7 @@
 .Header{
     
     .searchBar{
-        @include Search(490px, 37px, 5px, 12px, 0px, 0px, 80px);
+        @include Search(490px, 40px, 5px, 12px, 0px, 0px, 80px);
         background-color: #fff;
         display: flex;
     }
@@ -26,7 +26,7 @@
     }
 
     .search{
-        @include Search(480px, 33px, 5px, 00px, 0px, 0px, 10px);
+        @include Search(480px, 31px, 5px, 03px, 0px, 0px, 10px);
         border: 1px solid #fff;
     }
 
