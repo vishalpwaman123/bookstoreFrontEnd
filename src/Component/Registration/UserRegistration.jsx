@@ -9,6 +9,9 @@ import Button from '@material-ui/core/Button';
 import Signlogo from '../../Assert/RegistrationLogo.png'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import Radio from '@material-ui/core/Radio';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import RadioGroup from '@material-ui/core/RadioGroup';
 import userService from '../../Services/userService';
 
 const User_service = new userService();
@@ -30,12 +33,14 @@ class UserRegistration extends React.Component {
             Password: null,
             FullName: null,
             MobileNumber: null,
+            value: 'user',
 
             errors: {
                 EmailId: '',
                 Password: '',
                 FullName: '',
                 MobileNumber: '',
+                value: ''
             },
         }
     }
@@ -74,7 +79,7 @@ class UserRegistration extends React.Component {
         User_service.SignIn(user)
             .then(data => {
                 console.log("Login Data :", data);
-                localStorage.setItem('token',data.data.data.token);
+                localStorage.setItem('token', data.data.data.token);
                 this.props.history.push('/dashboard');
 
             })
@@ -108,6 +113,11 @@ class UserRegistration extends React.Component {
         }
 
         this.setState({ open: false })
+    };
+
+    handleChange = (event) => {
+        console.log(event.target.value)
+        this.setState({ value: event.target.value });
     };
 
     render() {
@@ -182,14 +192,41 @@ class UserRegistration extends React.Component {
                                 </div>
                                 :
                                 <div className="signupToggle">
-                                    <div className="FullName">FullName</div>
-                                    <InputGroup className="">
-                                        <FormControl
-                                            className="FullNameInput"
-                                            aria-label="Medium"
-                                            aria-describedby="inputGroup-sizing-sm"
-                                            onChange={(e) => { this.setState({ FullName: e.target.value }) }} />
-                                    </InputGroup>
+                                    {this.state.value === 'user' ?
+                                        <div className="FullName">
+                                            <div className="FName">
+                                                <div className="FirstName">First Name</div>
+                                                <InputGroup className="">
+                                                    <FormControl
+                                                        className="FirstNameInput"
+                                                        aria-label="Medium"
+                                                        aria-describedby="inputGroup-sizing-sm"
+                                                        onChange={(e) => { this.setState({ FullName: e.target.value }) }} />
+                                                </InputGroup>
+                                            </div>
+                                            <div className="LName">
+                                                <div className="LastName">Last Name</div>
+                                                <InputGroup className="">
+                                                    <FormControl
+                                                        className="LastNameInput"
+                                                        aria-label="Medium"
+                                                        aria-describedby="inputGroup-sizing-sm"
+                                                        onChange={(e) => { this.setState({ FullName: e.target.value }) }} />
+                                                </InputGroup>
+                                            </div>
+                                        </div>
+                                        :
+                                            <div className="Admin">
+                                                <div className="AdminName">Admin Name</div>
+                                                <InputGroup className="">
+                                                    <FormControl
+                                                        className="AdminNameInput"
+                                                        aria-label="Medium"
+                                                        aria-describedby="inputGroup-sizing-sm"
+                                                        onChange={(e) => { this.setState({ FullName: e.target.value }) }} />
+                                                </InputGroup>
+                                            </div>
+                                    }
                                     <div className="EmailId">EmailId</div>
                                     <InputGroup className="">
                                         <FormControl
@@ -214,12 +251,18 @@ class UserRegistration extends React.Component {
                                             aria-describedby="inputGroup-sizing-sm"
                                             onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }} />
                                     </InputGroup>
+                                    <div>
+                                        <RadioGroup className="RadioButton" aria-label="gender" value={this.state.value} onChange={this.handleChange}>
+                                            <FormControlLabel value="user" control={<Radio />} label="User" />
+                                            <FormControlLabel value="admin" control={<Radio />} label="Admin" />
+                                        </RadioGroup>
+                                    </div>
                                     <Button
                                         variant="contained"
                                         color="secondary"
                                         className="SignupButton"
                                         onClick={this.handleClickSignUp}>
-                                        Login
+                                        Sign Up
                                     </Button>
                                 </div>
                             }
@@ -245,7 +288,7 @@ class UserRegistration extends React.Component {
                                             </Alert>
                                             :
                                             <Alert onClose={this.handleClose} severity="error">
-                                                InValid Password Field 
+                                                InValid Password Field
                                             </Alert>
                                         }
                                     </div>

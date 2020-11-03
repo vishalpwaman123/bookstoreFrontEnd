@@ -22,6 +22,7 @@ export default function Header() {
     const dispatch = useDispatch();
     let history = useHistory();
  
+    
     const handleCart = () => {
 
         User_service.GetCart()
