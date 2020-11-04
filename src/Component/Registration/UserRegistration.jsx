@@ -56,8 +56,6 @@ class UserRegistration extends React.Component {
 
     handleClickSignIn = (event) => {
 
-        console.log("Flag Sign In");
-
         event.preventDefault();
         let errors = this.state.errors;
         const { name, value } = event.target;
@@ -81,14 +79,18 @@ class UserRegistration extends React.Component {
                 break;
         }
 
-        const user = {
 
-            EmailId: this.state.EmailId,
-            Password: this.state.Password,
-
-        };
 
         if( this.state.value == 'user') {
+
+            const user = {
+
+                EmailId: this.state.EmailId,
+                Password: this.state.Password,
+    
+            };
+
+            console.log("User Sign In", user);
 
         User_service.UserSignIn(user)
             .then(data => {
@@ -104,6 +106,14 @@ class UserRegistration extends React.Component {
 
         }else
         {
+            const user = {
+
+                email: this.state.EmailId,
+                password: this.state.Password,
+    
+            };
+
+            console.log("Admin Sign In", user);
 
             User_service.AdminSignIn(user)
             .then(data => {

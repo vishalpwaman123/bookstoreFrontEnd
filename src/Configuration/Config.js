@@ -1,6 +1,6 @@
 module.exports = {
     UsersLogin : "https://localhost:44343/api/Users/Login",
-    AdminLogin : "",
+    AdminLogin : "https://localhost:44343/api/Admin/Login",
     Get : "https://localhost:44343/api/Books",
     GetBookByName : "https://localhost:44343/api/Books?Bookname=",
     GetCart : "https://localhost:44343/api/Cart",

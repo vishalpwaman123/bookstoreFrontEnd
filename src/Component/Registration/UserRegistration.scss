@@ -124,6 +124,10 @@ $Border_Radius : 4px;
 
         .RadioButton{
             display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin: 10px 0px 0px 120px;
+            
         }
 
         .LoginButton{
@@ -267,10 +271,3 @@ $Input_height1 : 25px;
     }
 }
 
-.RadioButton{
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    margin: 10px 0px 0px 150px;
-    
-}
