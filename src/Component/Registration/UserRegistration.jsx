@@ -17,6 +17,10 @@ import userService from '../../Services/userService';
 const User_service = new userService();
 
 const validEmailRegex = RegExp(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+.)+[^<>()[\].,;:\s@"]{2,})$/i);
+const Name = RegExp(/^[a-z]$/i);
+const MobileInput = RegExp(/^[0-9]{10}$/i);
+
+
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -31,11 +35,16 @@ class UserRegistration extends React.Component {
             open: false,
             EmailId: null,
             Password: null,
-            FullName: null,
+            FirstName: null,
+            LastName: null,
+            AdminName: null,
             MobileNumber: null,
             value: 'user',
 
             errors: {
+                FirstName: '',
+                LastName: '',
+                AdminName: '',
                 EmailId: '',
                 Password: '',
                 FullName: '',
@@ -46,6 +55,9 @@ class UserRegistration extends React.Component {
     }
 
     handleClickSignIn = (event) => {
+
+        console.log("Flag Sign In");
+
         event.preventDefault();
         let errors = this.state.errors;
         const { name, value } = event.target;
@@ -76,10 +88,13 @@ class UserRegistration extends React.Component {
 
         };
 
-        User_service.SignIn(user)
+        if( this.state.value == 'user') {
+
+        User_service.UserSignIn(user)
             .then(data => {
-                console.log("Login Data :", data);
+                console.log("User Login Data :", data);
                 localStorage.setItem('token', data.data.data.token);
+                this.setState({ open: true })
                 this.props.history.push('/dashboard');
 
             })
@@ -87,24 +102,149 @@ class UserRegistration extends React.Component {
                 console.log(error);
             })
 
+        }else
+        {
 
-        this.setState({ open: true })
+            User_service.AdminSignIn(user)
+            .then(data => {
+                console.log("Admin Login Data :", data);
+                localStorage.setItem('token', data.data.data.token);
+                this.setState({ open: true })
+                this.props.history.push('/dashboard');
+
+            })
+            .catch(error => {
+                console.log(error);
+            })
+
+        }
+        // this.setState({ open: true })
     };
 
 
     handleClickSignUp = (event) => {
+
+        console.log("Flag ");
+
+
         event.preventDefault();
         let errors = this.state.errors;
+        const { name, value } = event.target;
 
-        if (this.state.EmailId === '') {
-            errors.EmailId = "First Name Required";
+        console.log("Flag 0");
+
+        if (this.state.EmailId === null) {
+            errors.EmailId = "Email Id Required";
         }
 
-        if (this.state.Password === '') {
-            errors.Password = "First Name Required";
+        if (this.state.Password === null) {
+            errors.Password = "Password Required";
         }
 
-        this.setState({ open: true })
+        if (this.state.MobileNumber === null) {
+            errors.MobileNumber = "Mobile Number Required";
+        }
+
+        console.log("Flag 1");
+
+        switch (name) {
+            case "email":
+                errors.EmailId = validEmailRegex.test(value) ? "" : "Email Id not valid";
+                break;
+            case "password":
+                errors.Password = value.length < 8 ? "Password Not valid" : "";
+                break;
+            case "mobileNumber":
+                errors.MobileNumber = !MobileInput.test(value) ? "Mobile Number Not valid" : "";
+                break;
+            default:
+                break;
+        }
+
+        console.log("Flag 2");
+
+        if (this.state.value == 'user') {
+
+            if (this.state.FirstName === null) {
+                errors.FirstName = "First Name Required";
+            }
+
+            if (this.state.LastName === null) {
+                errors.LastName = "Last Name Required";
+            }
+
+            switch (name) {
+                case "firstName":
+                    errors.FirstName = /*!Name.test(value) &&*/ value.length < 3 ? "First Name not valid" : "";
+                    break;
+                case "lastName":
+                    errors.LastName = /*!Name.test(value) &&*/ value.length < 3 ? "Last Name Not valid" : "";
+                    break;
+                default:
+                    break;
+            }
+
+            const user = {
+
+                emailId: this.state.EmailId,
+                password: this.state.Password,
+                firstName: this.state.FirstName,
+                lastName: this.state.LastName,
+                phoneNumber: this.state.MobileNumber,
+            };
+
+            console.log("User Registration Data :", user);
+
+            User_service.UsersRegistration(user)
+                .then(data => {
+
+                    console.log("User Response Data :", data);
+                    this.setState({ open: true })
+                    this.props.history.push('/');
+
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
+        } else {
+
+            if (this.state.AdminName === null) {
+
+                errors.AdminName = "Admin Required";
+            }
+
+            switch (name) {
+                case "adminName":
+                    errors.AdminName = value.length < 3 ? "Admin Name not valid" : "";
+                    break;
+                default:
+                    break;
+            }
+
+            const user = {
+
+                adminName : this.state.AdminName,
+                adminEmailId: this.state.EmailId,
+                password: this.state.Password,
+                phoneNumber: this.state.MobileNumber,
+            };
+
+            console.log("Admin Registration Data :", user);
+
+            User_service.AdminRegistration(user)
+                .then(data => {
+
+                    console.log("User Response Data :", data);
+                    this.setState({ open: true })
+                    this.props.history.push('/');
+
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
+        }
     };
 
     handleClose = (event, reason) => {
@@ -161,7 +301,12 @@ class UserRegistration extends React.Component {
                                             aria-describedby="inputGroup-sizing-sm"
                                             onChange={(e) => { this.setState({ Password: e.target.value }) }} />
                                     </InputGroup>
-                                    <div className="ForgetPassword">Forget password</div>
+                                    <div>
+                                        <RadioGroup className="RadioButton" aria-label="gender" value={this.state.value} onChange={this.handleChange}>
+                                            <FormControlLabel value="user" control={<Radio />} label="User" />
+                                            <FormControlLabel value="admin" control={<Radio />} label="Admin" />
+                                        </RadioGroup>
+                                    </div>
                                     <Button
                                         variant="contained"
                                         color="secondary"
@@ -169,6 +314,7 @@ class UserRegistration extends React.Component {
                                         onClick={this.handleClickSignIn}>
                                         Login
                                     </Button>
+                                    <div className="ForgetPassword">Forget password</div>
                                     <div className="lines">
                                         <hr className="solid"></hr>
                                         <div className="OR">OR</div>
@@ -199,9 +345,10 @@ class UserRegistration extends React.Component {
                                                 <InputGroup className="">
                                                     <FormControl
                                                         className="FirstNameInput"
+                                                        name="firstName"
                                                         aria-label="Medium"
                                                         aria-describedby="inputGroup-sizing-sm"
-                                                        onChange={(e) => { this.setState({ FullName: e.target.value }) }} />
+                                                        onChange={(e) => { this.setState({ FirstName: e.target.value }) }} />
                                                 </InputGroup>
                                             </div>
                                             <div className="LName">
@@ -209,28 +356,31 @@ class UserRegistration extends React.Component {
                                                 <InputGroup className="">
                                                     <FormControl
                                                         className="LastNameInput"
+                                                        name="lastName"
                                                         aria-label="Medium"
                                                         aria-describedby="inputGroup-sizing-sm"
-                                                        onChange={(e) => { this.setState({ FullName: e.target.value }) }} />
+                                                        onChange={(e) => { this.setState({ LastName: e.target.value }) }} />
                                                 </InputGroup>
                                             </div>
                                         </div>
                                         :
-                                            <div className="Admin">
-                                                <div className="AdminName">Admin Name</div>
-                                                <InputGroup className="">
-                                                    <FormControl
-                                                        className="AdminNameInput"
-                                                        aria-label="Medium"
-                                                        aria-describedby="inputGroup-sizing-sm"
-                                                        onChange={(e) => { this.setState({ FullName: e.target.value }) }} />
-                                                </InputGroup>
-                                            </div>
+                                        <div className="Admin">
+                                            <div className="AdminName">Admin Name</div>
+                                            <InputGroup className="">
+                                                <FormControl
+                                                    className="AdminNameInput"
+                                                    name="adminName"
+                                                    aria-label="Medium"
+                                                    aria-describedby="inputGroup-sizing-sm"
+                                                    onChange={(e) => { this.setState({ AdminName: e.target.value }) }} />
+                                            </InputGroup>
+                                        </div>
                                     }
                                     <div className="EmailId">EmailId</div>
                                     <InputGroup className="">
                                         <FormControl
                                             className="EmailIdInput"
+                                            name="email"
                                             aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm"
                                             onChange={(e) => { this.setState({ EmailId: e.target.value }) }} />
@@ -239,6 +389,7 @@ class UserRegistration extends React.Component {
                                     <InputGroup className="">
                                         <FormControl
                                             className="PasswordInput"
+                                            name="password"
                                             aria-label="Small"
                                             aria-describedby="inputGroup-sizing-sm"
                                             onChange={(e) => { this.setState({ Password: e.target.value }) }} />
@@ -248,6 +399,7 @@ class UserRegistration extends React.Component {
                                         <FormControl
                                             className="MobileInput"
                                             aria-label="Small"
+                                            name="mobileNumber"
                                             aria-describedby="inputGroup-sizing-sm"
                                             onChange={(e) => { this.setState({ MobileNumber: e.target.value }) }} />
                                     </InputGroup>

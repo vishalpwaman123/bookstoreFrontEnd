@@ -3,13 +3,15 @@ let Config = require('../Configuration/Config');
 const axiosService = new axiosServices();
 //const token = localStorage.getItem('token');
 
-const configUrl = Config.Users;
+const UsersLogin = Config.UsersLogin;
+const AdminLogin = Config.AdminLogin;
 const configGet = Config.Get;
 const GetBookByName = Config.GetBookByName;
 const GetCart = Config.GetCart;
 const GetBookById = Config.GetBookById;
 const GetWishList = Config.GetWishList;
-
+const AdminRegistration = Config.AdminRegistration;
+const UserRegistration = Config.UserRegistration;
 
 const Token = localStorage.getItem('token');
 const token = {headers : {
@@ -20,16 +22,37 @@ export default class userServices {
 
     
 
-    registration(data) {
+    UsersRegistration(data) {
 
-        let url = configUrl ;
+        let url = UserRegistration ;
+        console.log("Url User:", url);
         return axiosService.post(url, data, false)
 
     }
 
-    SignIn(data) {
+    AdminRegistration(data) {
 
-        let url = configUrl + '/Login';
+        let url = AdminRegistration ;
+        return axiosService.post(url, data, false)
+
+    }
+
+    UserSignIn(data) {
+
+        let url = UsersLogin;
+
+        console.log("Url :", url);
+
+        return axiosService.post(url, data, false);
+
+    }
+
+    AdminSignIn(data) {
+
+        let url = AdminLogin;
+
+        console.log("Url :", url);
+
         return axiosService.post(url, data, false);
 
     }
