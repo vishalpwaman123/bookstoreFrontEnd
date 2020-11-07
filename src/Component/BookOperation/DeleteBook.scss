@@ -1,0 +1,223 @@
+.AddBookMainContainers{
+
+    height: 694px;
+    width: 1518px;
+    background-color: rgb(236, 236, 236);
+    display: flex;
+}
+
+.Cointainer{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+    .DeleteOpetion{
+
+        .Action{
+            display: flex;
+            justify-content: center;
+            margin: 0px 0px 20px 0px;
+            
+            .deleteTextField{
+                background-color: rgb(245, 243, 243);
+            }
+
+            .BookNameTitle{
+                margin: 10px;
+            }
+
+            .Button{
+                margin: 10px;
+            }
+        }
+    }
+     
+    .Main{
+        border: 1px solid lightgray;
+        height: 500px;
+        width: 1000px;
+        margin: auto;
+        display: flex;
+
+        .FirstContainer{
+
+        // border: 1px solid lightgray;
+        height: 475px;
+        width: 300px;
+        margin: 10px ;
+        display: flex;
+
+        .ImageContainer{
+             border: 1px solid lightgray;
+            height: 400px;
+            width: 250px;
+            background-color: rgb(248, 248, 248);
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+
+            .ImageInput{
+                width: 180px;
+                margin: 190px 0px 0px 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+        }
+
+        .ImageContainer1{
+            // border: 1px solid lightgray;
+            height: 400px;
+            width: 250px;
+            // background-color: rgb(248, 248, 248);
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        }
+
+        .SecondContainer{
+
+            // border: 1px solid rgb(187, 187, 187);
+            height: 475px;
+            width: 680px;
+            margin: 10px 15px 10px 5px;
+
+            .Information{
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .BookName{
+
+                    display: flex;
+                    margin: 50px 0px 20px 0px;
+                    // border-radius: 5px;
+
+                    .BookNameTitle{
+                        margin: 0px 50px 0px 10px;
+                    }
+
+                    .BookNameInput{
+                        background-color: rgb(236, 236, 236);
+                        
+                    }
+                }
+
+                .AuthorName{
+
+                    display: flex;
+                    margin: 0px 0px 20px 0px;
+                    
+                    .AuthorNameTitle{
+                        margin: 0px 36px 0px 10px;
+                    }
+
+                    .AuthorNameInput{
+                        background-color: rgb(236, 236, 236);
+
+                    }
+                }
+
+                .Description{
+
+                    display: flex;
+                    margin: 0px 0px 20px 0px;
+
+                    .DescriptionTitle{
+                        margin: 0px 53px 0px 10px;
+                    }
+
+                    .DescriptionInput{
+                        background-color: rgb(236, 236, 236);
+                    }
+
+                    .MuiOutlinedInput-input {
+                        padding: 8px 14px;
+                        width: 400px;
+                    }
+                }
+
+                .Price{
+
+                    display: flex;
+                    margin: 0px 0px 10px 0px;
+
+                    .PriceTitle{
+                        margin: 0px 107px 0px 10px;
+                    }
+
+                    .PriceInput{
+                        background-color: rgb(236, 236, 236);
+
+                    }
+
+                    .MuiOutlinedInput-input {
+                        padding: 8px 14px;
+                        width: 100px;
+                    }
+                }
+
+                .Pages{
+
+                    display: flex;
+                    margin: 0px 0px 10px 0px;
+
+                    .PagesTitle{
+                        margin: 0px 97px 0px 10px;
+                    }
+
+                    .PagesInput{
+                        background-color: rgb(236, 236, 236);
+
+                    }
+
+                    .MuiOutlinedInput-input {
+                        padding: 8px 14px;
+                        width: 100px;
+                    }
+                }
+
+                .Quentity{
+
+                    display: flex;
+                    margin: 0px 0px 10px 0px;
+
+                    .QuentityTitle{
+                        margin: 0px 78px 0px 10px;
+                    }
+
+                    .QuentityInput{
+                        background-color: rgb(236, 236, 236);
+
+                    }
+
+                    .MuiOutlinedInput-input {
+                        padding: 8px 14px;
+                        width: 100px;
+                    }
+                }
+
+                // .MuiOutlinedInput-root {
+                //     position: relative;
+                //     border-radius: 1px;
+                // }
+
+                .MuiOutlinedInput-input {
+                    padding: 8px 14px;
+                    width: 300px;
+                }
+
+                .MuiOutlinedInput-notchedOutline {
+                    border-color: rgb(236, 236, 236);
+                    // background-color: #FFF;
+                    // color: red;
+                }
+            }
+        }
+}
+

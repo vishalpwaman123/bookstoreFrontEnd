@@ -15,4 +15,16 @@ export default class axiosServices {
 
     }
 
+    put(url, data, isRequiredHeader=false,header) {
+
+        return axios.put(url, data, isRequiredHeader&&header);
+
+    }
+
+    delete(url, data, isRequiredHeader=false,header) {
+
+        return axios.delete(url, data, isRequiredHeader&&header);
+
+    }
+
 }

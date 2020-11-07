@@ -12,6 +12,10 @@ import Profile from '../src/Component/Dashborder/Profile'
 import MyOrder from '../src/Component/Dashborder/MyOrder'
 import WishList from '../src/Component/Dashborder/WishList'
 import ResetPassword from '../src/Component/ResetPassword/ResetPassword'
+import AdminDashBoard from '../src/Component/BookOperation/AdminDashBoard'
+import AddBook from '../src/Component/BookOperation/AddBook'
+import UpdateBook from '../src/Component/BookOperation/UpdateBook'
+import DeleteBook from '../src/Component/BookOperation/DeleteBook'
 
 import { Provider } from 'react-redux';
 function App() {
@@ -31,6 +35,9 @@ function App() {
           <Route exact path="/Profile" component={Profile} />
           <Route exact path="/MyOrder" component={MyOrder} />
           <Route exact path="/WishList" component={WishList} />
+          <Route exact path="/AdminDashBoard" component={AdminDashBoard} />
+          <Route exact path="/AddBook" component={AddBook} />
+          <Route exact path="/DeleteBook" component={DeleteBook} />
         </div>
         </Provider>
       </Switch>

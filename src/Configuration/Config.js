@@ -8,4 +8,8 @@ module.exports = {
     GetWishList : "https://localhost:44343/api/WishList",
     AdminRegistration : "https://localhost:44343/api/Admin",
     UserRegistration : "https://localhost:44343/api/Users",
+
+    AddBook : "https://localhost:44343/api/Books",
+    UpdateBook : "https://localhost:44343/api/Books",
+    DeleteBook : "https://localhost:44343/api/Books/0",
 }

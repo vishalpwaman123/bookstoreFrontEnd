@@ -1,0 +1,37 @@
+
+.AdminDMainContainer{
+
+    .Carts{
+
+        display: flex;
+        flex-wrap: wrap;
+        padding: 05%;
+        .AddBook, .UpdateBook, .DeleteBook, .DisplayBook{
+
+            width : 345px;
+            height: 140px;
+            margin: 3% 3% 4% 3%;
+            box-shadow: 0px 10px 5px grey;
+        }
+
+        .Cart{
+            border: 1px solid lightgray;
+            box-shadow: 10px 10px 5px lightgray;
+
+            .media{
+                height: 100;
+                width : 100;
+                margin: 01% 5% 01% 38%;
+                
+            }
+        }
+
+    }
+}
+
+element.style {
+    height: 100px;
+    width: 100px;
+    margin: 01% 5% 01% 38%;
+
+}
