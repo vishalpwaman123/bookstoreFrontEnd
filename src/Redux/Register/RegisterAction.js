@@ -7,6 +7,8 @@ import {ADDQUENTITY} from './RegisterType'
 import {SUBQUENTITY} from './RegisterType'
 import {PLACEORDERKEY} from './RegisterType'
 import { CONTINUESKEY } from './RegisterType'
+import { SORTVALUE } from './RegisterType'
+import { ATTRIBUTEVALUE } from './RegisterType'
  
 export  const loginToggleStatus = () => {
     return {
@@ -64,5 +66,19 @@ export  const PlaceOrderPress = () => {
 export  const ContinuesPress = () => {
     return {
         type : CONTINUESKEY 
+    }
+}
+
+export  const SortFunction = (value) => {
+    return {
+        type : SORTVALUE ,
+        value : value ,
+    }
+}
+
+export  const AttributeFunction = (value) => {
+    return {
+        type : ATTRIBUTEVALUE ,
+        value : value ,
     }
 }

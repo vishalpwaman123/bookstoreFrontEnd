@@ -32,22 +32,22 @@ export default function AdminDashBoard() {
     let history = useHistory();
 
     const handleAddBook = () => {
-        
+
         history.push("/AddBook");
     }
 
     const handleUpdateBook = () => {
-        
+
         history.push("/UpdateBook");
     }
 
     const handleDeleteBook = () => {
-        
+
         history.push("/DeleteBook");
     }
 
     const handleDisplayBook = () => {
-        
+
         history.push("/dashboard");
     }
 
@@ -69,18 +69,16 @@ export default function AdminDashBoard() {
                                 <Typography gutterBottom variant="h5" component="h2">
                                     ADD BOOK
                                  </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {/* Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica */}
-                                </Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button 
-                                size="small" 
+                            <Button
+                                size="small"
                                 color="primary"
-                                onClick={()=>{ handleAddBook()}}>
-                                Add
+                                onClick={() => { handleAddBook() }}>
+                                <Typography variant="button" display="block" className="NameTitle" gutterBottom>
+                                    Add
+                                </Typography>
                             </Button>
                         </CardActions>
                     </Card>
@@ -99,18 +97,16 @@ export default function AdminDashBoard() {
                                 <Typography gutterBottom variant="h5" component="h2">
                                     UPDATE BOOK
                                  </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {/* Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica */}
-                                </Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button 
-                                size="small" 
+                            <Button
+                                size="small"
                                 color="primary"
-                                onClick={()=>{ handleUpdateBook()}}>
-                                Update
+                                onClick={() => { handleUpdateBook() }}>
+                                <Typography variant="button" display="block" className="NameTitle" gutterBottom>
+                                    Update
+                                </Typography>
                             </Button>
                         </CardActions>
                     </Card>
@@ -129,18 +125,16 @@ export default function AdminDashBoard() {
                                 <Typography gutterBottom variant="h5" component="h2">
                                     DELETE BOOK
                                  </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {/* Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica */}
-                                </Typography>
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button 
-                                size="small" 
+                            <Button
+                                size="small"
                                 color="primary"
-                                onClick={()=>{ handleDeleteBook()}}>
-                                Delete
+                                onClick={() => { handleDeleteBook() }}>
+                                <Typography variant="button" display="block" className="NameTitle" gutterBottom>
+                                    Delete
+                                </Typography>
                             </Button>
                         </CardActions>
                     </Card>
@@ -159,18 +153,16 @@ export default function AdminDashBoard() {
                                 <Typography gutterBottom variant="h5" component="h2">
                                     DISPLAY BOOK
                                  </Typography>
-                                <Typography variant="body2" color="textSecondary" component="p">
-                                    {/* Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-                                    across all continents except Antarctica */}
-                                </Typography>
                             </CardContent>
                         </CardActionArea>
-                        <CardActions>
-                            <Button 
-                                size="small" 
+                        <CardActions className="CardActions">
+                            <Button
+                                size="small"
                                 color="primary"
-                                onClick={()=>{ handleDisplayBook()}}>
-                                Display
+                                onClick={() => { handleDisplayBook() }}>
+                                <Typography variant="button" display="block" className="NameTitle" gutterBottom>
+                                    Display
+                                </Typography>
                             </Button>
                         </CardActions>
                     </Card>

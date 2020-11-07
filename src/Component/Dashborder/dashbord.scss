@@ -43,8 +43,19 @@
             font-size: 25px;
         }
 
+        .Attribute{
+
+            margin-left: 500px;
+
+            .AttributeButton{
+                width: 200px;
+                height: 40px;
+                border: 1px solid lightgray;
+            }
+        }
+
         .Sort{
-            margin-left: 900px;
+            margin-left: 100px;
 
             .SortButton{
                 width: 200px;

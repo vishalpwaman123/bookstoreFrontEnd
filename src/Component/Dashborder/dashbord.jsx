@@ -8,14 +8,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { useHistory } from "react-router-dom";
 import {useSelector , useDispatch} from 'react-redux';
 import { bookNameFunction } from '../../Redux';
-
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import { SortFunction } from '../../Redux';
+import { AttributeFunction } from '../../Redux';
 
 const User_service = new userService();
 
 export default function Dashbord(props) {
 
     const BookName = useSelector(state => state.currentBookName)
+    const value = useSelector(state => state.Sortvalue)
+    const attributevalue = useSelector(state => state.attributevalue)
 
     console.log(BookName);
 
@@ -24,6 +26,7 @@ export default function Dashbord(props) {
     let history = useHistory();
 
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorE2, setAnchorE2] = React.useState(null);
     const [notes, setNotes] = useState([]);
 
 
@@ -36,9 +39,21 @@ export default function Dashbord(props) {
         setAnchorEl(event.currentTarget);
     };
 
+    const handleClick2 = (event) => {
+        setAnchorE2(event.currentTarget);
+    };
+
     const handleClose = () => {
         setAnchorEl(null);
     };
+
+    const handleClose2 = () => {
+        setAnchorE2(null);
+    };
+    // const handleValue = (value) => {
+    //     console.log(value);
+    //     setvalue(value);
+    // };
 
     useEffect(() => {
         
@@ -71,9 +86,26 @@ export default function Dashbord(props) {
             <div className="DashBody">
                 <div className="Middle">
                     <div className="Books">Books</div>
+                    <div className="Attribute">
+                        <Button className="AttributeButton" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick2}>
+                            {attributevalue}
+                        </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorE2}
+                            keepMounted
+                            open={Boolean(anchorE2)}
+                            onClose={handleClose2}
+                        >
+                            <MenuItem onClick={()=> dispatch(AttributeFunction('BOOK NAME') ,handleClose2())}>BOOK NAME</MenuItem>
+                            <MenuItem onClick={()=> dispatch(AttributeFunction('PRICE') ,handleClose2())}>PRICE</MenuItem>
+                            <MenuItem onClick={()=> dispatch(AttributeFunction('AUTHOR NAME') ,handleClose2())}>AUTHOR NAME</MenuItem>
+                            </Menu>
+                    </div>
                     <div className="Sort">
                         <Button className="SortButton" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                            Sort by relevence
+                            
+                            {value}
                         </Button>
                         <Menu
                             id="simple-menu"
@@ -82,9 +114,10 @@ export default function Dashbord(props) {
                             open={Boolean(anchorEl)}
                             onClose={handleClose}
                         >
-                            <MenuItem onClick={handleClose}>Price : Low To High</MenuItem>
-                            <MenuItem onClick={handleClose}>Price : High To Low</MenuItem>
-                            <MenuItem onClick={handleClose}>Newest Arrive</MenuItem>
+                            <MenuItem onClick={()=> dispatch(SortFunction('Low To High') ,handleClose())}>Low To High</MenuItem>
+                            <MenuItem onClick={()=> dispatch(SortFunction('High To Low') ,handleClose())}>High To Low</MenuItem>
+                            <MenuItem onClick={()=> dispatch(SortFunction('Newest Arrive') ,handleClose())}>Newest Arrive</MenuItem>
+                            <MenuItem onClick={()=> dispatch(SortFunction('Oldest Arrive') ,handleClose())}>Oldest Arrive</MenuItem>
                         </Menu>
                     </div>
                 </div>

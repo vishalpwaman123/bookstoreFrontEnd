@@ -7,6 +7,8 @@ import { ADDQUENTITY } from './RegisterType'
 import { SUBQUENTITY } from './RegisterType'
 import { PLACEORDERKEY } from './RegisterType'
 import { CONTINUESKEY } from './RegisterType'
+import { SORTVALUE } from './RegisterType'
+import { ATTRIBUTEVALUE } from './RegisterType'
 
 const initialState = {
     key: '',
@@ -18,6 +20,8 @@ const initialState = {
     PlaceOrderKey: false,
     ContinuesKey: false,
     quentity: 0,
+    Sortvalue: 'Sort by relevence',
+    attributevalue : 'BOOK NAME'
 }
 
 const bookStorereducer = (state = initialState, action) => {
@@ -90,6 +94,22 @@ const bookStorereducer = (state = initialState, action) => {
             return {
                 ...state,
                 quentity: state.quentity - 1,
+
+            }
+
+        case SORTVALUE:
+
+            return {
+                ...state,
+                Sortvalue: action.value,
+
+            }
+
+        case ATTRIBUTEVALUE:
+
+            return {
+                ...state,
+                attributevalue: action.value,
 
             }
 
